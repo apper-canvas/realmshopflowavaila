@@ -32,8 +32,8 @@ export const orderService = {
         throw new Error('Invalid order data: items array is required and cannot be empty');
       }
       
-      if (!orderData.totalAmount || orderData.totalAmount <= 0) {
-        throw new Error('Invalid order data: totalAmount must be greater than 0');
+if (!orderData.total || orderData.total <= 0) {
+        throw new Error('Invalid order data: total must be greater than 0');
       }
       
       await delay(300);

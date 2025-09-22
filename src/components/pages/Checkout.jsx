@@ -73,7 +73,7 @@ const Checkout = () => {
     try {
       setLoading(true);
       
-      const orderData = {
+const orderData = {
         items: cartItems.map(item => ({
           productId: item.productId,
           quantity: item.quantity,
@@ -90,6 +90,19 @@ const Checkout = () => {
         },
         paymentMethod: "Credit Card"
       };
+
+      try {
+        const order = await orderService.create(orderData);
+        clearCart();
+        toast.success('Order placed successfully!');
+        navigate('/order-confirmation', { 
+          state: { orderId: order.id, order } 
+        });
+      } catch (error) {
+        console.error('Order creation failed:', error);
+        toast.error(error.message || 'Failed to place order. Please try again.');
+        return;
+      }
 
       const order = await orderService.create(orderData);
       clearCart();
