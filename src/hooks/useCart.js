@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 export const useCart = () => {
@@ -25,28 +25,30 @@ export const useCart = () => {
     }
   }, [cartItems, isLoading]);
 
-  const addToCart = (product, quantity = 1, selectedOptions = {}) => {
-    setCartItems(prevItems => {
-      const existingItemIndex = prevItems.findIndex(
-        item => item.productId === product.Id.toString() && 
-        JSON.stringify(item.selectedOptions) === JSON.stringify(selectedOptions)
-      );
+const addToCart = (product, quantity = 1, selectedOptions = {}) => {
+    const existingItemIndex = cartItems.findIndex(
+      item => item.productId === product.Id && 
+      JSON.stringify(item.selectedOptions) === JSON.stringify(selectedOptions)
+    );
 
-      if (existingItemIndex > -1) {
+    if (existingItemIndex !== -1) {
+      setCartItems(prevItems => {
         const updatedItems = [...prevItems];
         updatedItems[existingItemIndex].quantity += quantity;
         toast.success(`Updated ${product.name} quantity in cart`);
         return updatedItems;
-      } else {
-        toast.success(`${product.name} added to cart`);
-        return [...prevItems, {
-          productId: product.Id.toString(),
-          product: product,
-          quantity: quantity,
-          selectedOptions: selectedOptions
-        }];
-      }
-    });
+      });
+    } else {
+      const newItem = {
+        id: Date.now() + Math.random(),
+        quantity: quantity,
+        productId: product.Id,
+        product: product,
+        selectedOptions
+      };
+      setCartItems(prevItems => [...prevItems, newItem]);
+      toast.success(`${product.name} added to cart`);
+    }
   };
 
   const removeFromCart = (productId, selectedOptions = {}) => {
@@ -62,20 +64,21 @@ export const useCart = () => {
     });
   };
 
-  const updateQuantity = (productId, quantity, selectedOptions = {}) => {
+const updateQuantity = (productId, quantity, selectedOptions = {}) => {
     if (quantity <= 0) {
       removeFromCart(productId, selectedOptions);
       return;
     }
 
     setCartItems(prevItems => {
-      return prevItems.map(item => {
-        if (item.productId === productId.toString() && 
+      const updatedItems = prevItems.map(item => {
+        if (item.productId === productId && 
             JSON.stringify(item.selectedOptions) === JSON.stringify(selectedOptions)) {
           return { ...item, quantity: quantity };
         }
         return item;
       });
+      return updatedItems;
     });
   };
 
@@ -93,9 +96,9 @@ export const useCart = () => {
     return cartItems.reduce((total, item) => total + (item.product.price * item.quantity), 0);
   };
 
-  const getItemCount = (productId, selectedOptions = {}) => {
+const getItemCount = (productId, selectedOptions = {}) => {
     const item = cartItems.find(
-      item => item.productId === productId.toString() && 
+      item => item.productId === productId && 
       JSON.stringify(item.selectedOptions) === JSON.stringify(selectedOptions)
     );
     return item ? item.quantity : 0;
