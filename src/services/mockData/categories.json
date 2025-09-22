@@ -1,0 +1,32 @@
+[
+  {
+    "Id": 1,
+    "name": "Electronics",
+    "subcategories": ["Audio", "Wearables", "Gaming", "Accessories", "Smart Home"],
+    "productCount": 156
+  },
+  {
+    "Id": 2,
+    "name": "Home & Kitchen",
+    "subcategories": ["Appliances", "Cookware", "Furniture", "Decor"],
+    "productCount": 89
+  },
+  {
+    "Id": 3,
+    "name": "Clothing",
+    "subcategories": ["Shirts", "Pants", "Dresses", "Outerwear"],
+    "productCount": 234
+  },
+  {
+    "Id": 4,
+    "name": "Accessories",
+    "subcategories": ["Wallets", "Eyewear", "Jewelry", "Bags"],
+    "productCount": 78
+  },
+  {
+    "Id": 5,
+    "name": "Sports & Fitness",
+    "subcategories": ["Equipment", "Hydration", "Apparel", "Supplements"],
+    "productCount": 145
+  }
+]
