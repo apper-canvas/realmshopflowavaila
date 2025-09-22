@@ -23,9 +23,17 @@ export const orderService = {
     await delay(500);
     const newOrder = {
       Id: Math.max(...orders.map(o => o.Id)) + 1,
-      ...orderData,
+...orderData,
       orderDate: new Date().toISOString().split('T')[0],
-      estimatedDelivery: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0]
+      estimatedDelivery: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+      trackingNumber: `TRK${String(newOrder.Id).padStart(3, '0')}`,
+      trackingUpdates: [
+        {
+          date: new Date().toISOString().split('T')[0],
+          status: "Order Processed",
+          location: "Fulfillment Center"
+        }
+      ]
     };
     orders.push(newOrder);
     return { ...newOrder };

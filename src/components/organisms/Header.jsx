@@ -32,7 +32,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+<nav className="hidden lg:flex items-center gap-8">
             <Link 
               to="/categories" 
               className="text-gray-600 hover:text-primary transition-colors font-medium"
@@ -50,6 +50,12 @@ const Header = () => {
               className="text-gray-600 hover:text-primary transition-colors font-medium"
             >
               New Arrivals
+            </Link>
+            <Link 
+              to="/order-history" 
+              className="text-gray-600 hover:text-primary transition-colors font-medium"
+            >
+              Order History
             </Link>
           </nav>
 
@@ -103,7 +109,7 @@ const Header = () => {
       {isMobileMenuOpen && (
         <div className="lg:hidden fixed inset-0 top-16 bg-black/20 backdrop-blur-sm z-40">
           <div className="bg-white/95 backdrop-blur-md p-6 shadow-2xl">
-            <nav className="flex flex-col gap-4">
+<nav className="flex flex-col gap-4">
               <Link 
                 to="/categories" 
                 className="text-gray-600 hover:text-primary transition-colors font-medium py-2"
@@ -124,6 +130,13 @@ const Header = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 New Arrivals
+              </Link>
+              <Link 
+                to="/order-history" 
+                className="text-gray-600 hover:text-primary transition-colors font-medium py-2"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Order History
               </Link>
             </nav>
           </div>

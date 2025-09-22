@@ -13,8 +13,8 @@
         "selectedOptions": {}
       }
     ],
-    "total": 359.97,
-    "status": "Processing",
+"total": 359.97,
+    "status": "Shipped",
     "shippingAddress": {
       "street": "123 Main St",
       "city": "New York",
@@ -24,7 +24,25 @@
     },
     "paymentMethod": "Credit Card",
     "orderDate": "2024-01-15",
-    "estimatedDelivery": "2024-01-22"
+    "estimatedDelivery": "2024-01-22",
+    "trackingNumber": "TRK001",
+    "trackingUpdates": [
+      {
+        "date": "2024-01-15",
+        "status": "Order Processed",
+        "location": "Fulfillment Center"
+      },
+      {
+        "date": "2024-01-16",
+        "status": "Shipped",
+        "location": "Origin Facility - Newark, NJ"
+      },
+      {
+        "date": "2024-01-20",
+        "status": "In Transit",
+        "location": "Distribution Center - Chicago, IL"
+      }
+    ]
   },
   {
     "Id": 2,
@@ -37,7 +55,7 @@
     ],
     "total": 149.99,
     "status": "Shipped",
-    "shippingAddress": {
+"shippingAddress": {
       "street": "456 Oak Ave",
       "city": "Los Angeles",
       "state": "CA",
@@ -46,6 +64,67 @@
     },
     "paymentMethod": "PayPal",
     "orderDate": "2024-01-12",
-    "estimatedDelivery": "2024-01-19"
+    "estimatedDelivery": "2024-01-19",
+    "trackingNumber": "TRK002",
+    "trackingUpdates": [
+      {
+        "date": "2024-01-12",
+        "status": "Order Processed",
+        "location": "Fulfillment Center"
+      },
+      {
+        "date": "2024-01-13",
+        "status": "Shipped",
+        "location": "Origin Facility - San Francisco, CA"
+      },
+      {
+        "date": "2024-01-21",
+        "status": "Out for Delivery",
+        "location": "Local Delivery Facility - Los Angeles, CA"
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "items": [
+      {
+        "productId": 5,
+        "quantity": 1,
+        "selectedOptions": {
+          "color": "Black",
+          "size": "M"
+        }
+      }
+    ],
+    "total": 89.99,
+    "status": "Delivered",
+    "shippingAddress": {
+      "street": "789 Pine Street",
+      "city": "Seattle",
+      "state": "WA",
+      "zipCode": "98101",
+      "country": "USA"
+    },
+    "paymentMethod": "Apple Pay",
+    "orderDate": "2024-01-10",
+    "estimatedDelivery": "2024-01-17",
+    "trackingNumber": "TRK003",
+    "trackingUpdates": [
+      {
+        "date": "2024-01-10",
+        "status": "Order Processed",
+        "location": "Fulfillment Center"
+      },
+      {
+        "date": "2024-01-11",
+        "status": "Shipped",
+        "location": "Origin Facility - Portland, OR"
+      },
+      {
+        "date": "2024-01-19",
+        "status": "Delivered",
+        "location": "Front Door - Seattle, WA"
+      }
+    ]
   }
 ]
